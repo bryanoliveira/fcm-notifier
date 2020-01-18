@@ -1,6 +1,6 @@
 from pyfcm import FCMNotification
 
-class MLNotifier:
+class FCMNotifier:
     def __init__(self, api_key, devices):
         '''Creates an instance of MLNotifier
 
@@ -60,7 +60,7 @@ class MLNotifier:
 
 if __name__ == '__main__':
     import random
-    notifier = MLNotifier(
+    notifier = FCMNotifier(
         '<API_KEY>',
         '<DEVICE_TOKEN>'
     )
