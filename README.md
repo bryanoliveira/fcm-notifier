@@ -10,6 +10,7 @@ A python module I made to notify about ML model training statuses with Firebase 
 - Install with `pip install git+https://github.com/bryanlincoln/fcm-notifier`
 - In your code, import it with `from fcm_notifier import FCMNotifier`
 - Instantiate it passing your FCM API Token and device tokens (may be a single string or a list of strings):
+  
   `notifier = FCMNotifier(<API TOKEN>, <DEVICE TOKENS>)`
 - Push a notification! `notifier.notify(title='Hello world')`
 
