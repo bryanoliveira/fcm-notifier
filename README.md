@@ -7,15 +7,16 @@ A python module I made to notify about ML model training statuses with Firebase 
 - A device token (to receive notifications)
 
 ## Usage
-- Install: 
+- Install:
   
   `pip install git+https://github.com/bryanlincoln/fcm-notifier`
+- Set up the environment variables `FCM_API_KEY` and `FCM_DEVICE_TOKEN` with your Firebase project token and your device token. Alternatively, you may pass this values directly to the FCMNotifier constructor, but it's not recommended for security reasons.
 - In your code, import it with
 
   `from fcm_notifier import FCMNotifier`
-- Instantiate it passing your FCM API Token and device tokens (may be a single string or a list of strings):
+- Instantiate it:
   
-  `notifier = FCMNotifier(<API TOKEN>, <DEVICE TOKENS>)`
+  `notifier = FCMNotifier()`
 - Push a notification! 
   
   `notifier.notify(title='Hello world')`
