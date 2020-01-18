@@ -1,7 +1,8 @@
 from pyfcm import FCMNotification
+import os
 
 class FCMNotifier:
-    def __init__(self, api_key, devices):
+    def __init__(self, api_key=None, devices=None):
         '''Creates an instance of MLNotifier
 
         Configures Firebase Cloud Messaging to be able to push notifications.
@@ -13,9 +14,26 @@ class FCMNotifier:
             devices (string or list): A single string containing a device suitable to
                 receive notifications or a list of them.
         '''
-        self.push_service = FCMNotification(api_key=api_key)
+        if api_key is None:
+            api_key = os.environ.get('FCM_API_KEY')
+        if devices is None:
+            devices = os.environ.get('FCM_DEVICE_TOKEN')
 
-        self.devices = devices
+        if api_key is None or devices is None:
+            print('FCMNotifier error: No FCM API Key or device token was specified. FCMNotifier will not work.')
+            self.disabled = True
+        else:
+            self.disabled = False
+
+        if not self.disabled:
+            try:
+                self.push_service = FCMNotification(api_key=api_key)
+                self.devices = devices
+            except Exception as e:
+                print('FCMNotifier error:', e)
+                print('FCMNotifier will be disabled.')
+                self.disabled = True
+
 
     def notify(self, **kwargs):
         '''Notifies your device the status of anything
@@ -39,6 +57,10 @@ class FCMNotifier:
             title (string, optional): The title of the notification
             message (string, optional): The whole message to be sent
         '''
+
+        if self.disabled:
+            return
+
         title='Train Status'
         message = ''
 
@@ -56,7 +78,9 @@ class FCMNotifier:
             else:
                 result = self.push_service.notify_single_device(registration_id=self.devices, message_title=title, message_body=message)
         except Exception as e:
-            print('MLNotifier', e)
+            print('FCMNotifier error:', e)
+            print('FCMNotifier will be disabled.')
+            self.disabled = True
 
 if __name__ == '__main__':
     import random
