@@ -28,6 +28,8 @@ A python module to notify about Machine Learning model training statuses with Fi
 
     `notifier.notify(title='Hello world')`
 
+## Additional Info
+
 You may use the optional argument `message` to set up a notification body. Aditional arguments are accepted too. They'll be arranged into the notification's body. Examples:
 
 - Calling `notify(title='Notification Title', message='Notification Body')` generates a notification like:
