@@ -2,7 +2,7 @@
 
 A python module to notify about Machine Learning model training statuses with Firebase Cloud Messaging. It is best used with [Flutter Firebase Cloud Messaging Receiver](https://github.com/bryanlincoln/flutter-fcm-receiver), a Flutter app I made to export device's tokens and receive notifications.
 
-## Requires
+## Requirements
 
 -   Python 3 and `pyfcm` module (`pip install pyfcm`)
 -   A Firebase Cloud Messaging project token (see https://firebase.google.com/docs/cloud-messaging)
