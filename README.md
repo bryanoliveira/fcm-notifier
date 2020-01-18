@@ -2,7 +2,7 @@
 A python module I made to notify about ML model training statuses with Firebase Cloud Messaging.
 
 ## Requires
-- Python 3
+- Python 3 and `pyfcm` module (`pip install pyfcm`)
 - A Firebase Cloud Messaging project token (see https://firebase.google.com/docs/cloud-messaging)
 - A device token (to receive notifications)
 
